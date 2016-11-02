@@ -80,7 +80,7 @@ if ( !class_exists( 'Scramble_email' ) ) {
 		 */
 		function register_shortcodes() {
 
-			add_shortcode( 'scem-email', array($this, 'render_shortcode') );
+			add_shortcode( 'scem', array($this, 'render_shortcode') );
 		}
 
 		/**

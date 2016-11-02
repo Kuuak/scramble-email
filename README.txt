@@ -18,7 +18,7 @@ Simply replace the emails in your post or page content by an unique shortcode.
 
 1. Upload `scramble-email.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Use  the shortcode `[scem-email email="user@example.com" title="Contact me" class="optional-class" subject="Optional email subject" /]` in post content.
+3. Use  the shortcode `[scem email="user@example.com" title="Contact me" class="optional-class" subject="Optional email subject" /]` in post content.
 
 == Frequently Asked Questions ==
 
