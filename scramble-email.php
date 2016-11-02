@@ -7,8 +7,6 @@
  * Author URI:		https://opusmagnum.ch
  * License:				GPL-2.0+
  * License URI:		http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:		scem
- * Domain Path:		/languages
  *
  * Scramble Email is free software; you can redistribute it and/or modify it under the terms of the GNU
  * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume
@@ -88,7 +86,7 @@ if ( !class_exists( 'Scramble_email' ) ) {
 					'email'		=> null,
 					'class'		=> null,
 					'subject'	=> null,
-					'title'		=> __( "Email", 'scem' ),
+					'title'		=> "Email",
 				), $atts )
 			);
 
