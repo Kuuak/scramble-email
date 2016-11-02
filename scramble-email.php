@@ -74,11 +74,23 @@ if ( !class_exists( 'Scramble_email' ) ) {
 			add_action('wp_enqueue_scripts', array( $this, 'scem_enqueue_files') );
 		}
 
+		/**
+		 * Register the shortcode
+		 * @since	TODO version
+		 */
 		function register_shortcodes() {
 
 			add_shortcode( 'scem-email', array($this, 'render_shortcode') );
 		}
 
+		/**
+		 * Transform the shortcode into javascript function call.
+		 *
+		 * @since		TODO version
+		 *
+		 * @param		array		$atts		Shortcode attributes.
+		 * @return	string					Rendered HTML.
+		 */
 		function render_shortcode( $atts ) {
 			// Attributes
 			extract( shortcode_atts(
@@ -103,11 +115,6 @@ if ( !class_exists( 'Scramble_email' ) ) {
 		public function scem_enqueue_files( ) {
 
 			wp_enqueue_script( 'scem_js', $this->directory_uri . 'js/scem.js', NULL, $this->version );
-			// wp_enqueue_style( 'scem_css', $this->directory_uri . 'css/scem.css', false, $this->version );
-
-			// if ( is_array($zones = get_option('scem_zone')) ) {
-			// 	wp_localize_script( 'scem_js', 'scem', array_flip($zones) );
-			// }
 		}
 	}
 }
