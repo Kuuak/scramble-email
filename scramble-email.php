@@ -45,40 +45,97 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 	class Scramble_Email {
 
 		/**
-		 * Class Constructor.
-		 * @since  TODO version
+		 * The unique identifier of this plugin.
+		 *
+		 * @since		TODO version
+		 * @access	protected
+		 * @var			string	$plugin_name	The string used to uniquely identify this plugin.
 		 */
-		public function __construct() {
-			add_action( 'plugins_loaded', array( $this, 'scem_setup' ), 1 );
-			add_action( 'plugins_loaded', array( $this, 'scem_init' ), 10 );
-		}
+		protected $plugin_name;
 
 		/**
-		 * Setup ID, Version, Directory path, and URI
-		 * @since  TODO version
+		 * The current version of the plugin.
+		 *
+		 * @since		TODO version
+		 * @access	protected
+		 * @var			string	$version	The current version of the plugin.
 		 */
-		public function scem_setup() {
-			$this->id							= 'scem';
-			$this->version				= '0.1';
-			$this->directory_path	= trailingslashit( plugin_dir_path( __FILE__ ) );
-			$this->directory_uri	= trailingslashit( plugin_dir_url(  __FILE__ ) );
+		protected $version;
+
+		/**
+		 * The directory path of the plugin.
+		 *
+		 * @since		TODO version
+		 * @access	protected
+		 * @var			string	$dir_path	The directory path of the plugin.
+		 */
+		protected $dir_path;
+
+		/**
+		 * The directory URI of the plugin.
+		 *
+		 * @since		TODO version
+		 * @access	protected
+		 * @var			string	$dir_uri	The directory URI of the plugin.
+		 */
+		protected $dir_uri;
+
+		/**
+		 * Class Constructor.
+		 *
+		 * @since		TODO version
+		 */
+		public function __construct() {
+
+			$this->version			= '0.1';
+			$this->plugin_name	= 'scramble-email';
+			$this->dir_path			= trailingslashit( plugin_dir_path( __FILE__ ) );
+			$this->dir_uri			= trailingslashit( plugin_dir_url(  __FILE__ ) );
+
+			$this->load_dependencies();
+			$this->register_public_hooks();
 		}
 
 		/**
 		 * Init the plugin functions
-		 * @since	TODO version
+		 *
+		 * @since		TODO version
 		 */
-		public function scem_init() {
+		private function load_dependencies() {
 
-			add_action( 'init', array($this, 'register_shortcodes') );
-			add_action('wp_enqueue_scripts', array( $this, 'scem_enqueue_files') );
+			/**
+			 * The class responsible for defining all actions that occur in the admin area.
+			 */
+			require_once $this->dir_path .'admin/class-scramble-email-admin.php';
+		}
+
+		/**
+		 * Register all of the hooks related to the public-facing functionality
+		 * of the plugin.
+		 *
+		 * @since		TODO version
+		 */
+		private function register_public_hooks() {
+
+			add_action( 'init', array($this, 'add_shortcodes') );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts') );
+		}
+
+		/**
+		 * Register all of the hooks related to the admin area functionality
+		 * of the plugin.
+		 *
+		 * @since		TODO version
+		 */
+
 		}
 
 		/**
 		 * Register the shortcode
-		 * @since	TODO version
+		 *
+		 * @since		TODO version
 		 */
-		function register_shortcodes() {
+		public function add_shortcodes() {
 
 			add_shortcode( 'scem', array($this, 'render_shortcode') );
 		}
@@ -91,30 +148,52 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		 * @param		array		$atts		Shortcode attributes.
 		 * @return	string					Rendered HTML.
 		 */
-		function render_shortcode( $atts ) {
+		public function render_shortcode( $atts ) {
 			// Attributes
 			extract( shortcode_atts(
 				array(
-					'email'		=> null,
-					'class'		=> null,
-					'subject'	=> null,
-					'title'		=> "Email",
+					'email'			=> null,
+					'title'			=> "Email",
+					'classes'		=> null,
+					'subject'		=> null,
 				), $atts )
 			);
 
 			$email = base64_encode($email);
 			$title = base64_encode($title);
 
-			return "<script>scem_unscramble( '$email' , '$title'". ( (!empty($class) || !empty($subject)) ? ', '. (!empty($subject) ? "'$class'" : "'null'") . (!empty($subject) ? ", '$subject'" : '') : '' ) .');</script>';
+			return "<script>scem_unscramble( '$email' , '$title'". ( (!empty($classes) || !empty($subject)) ? ', '. (!empty($subject) ? "'$classes'" : "'null'") . (!empty($subject) ? ", '$subject'" : '') : '' ) .');</script>';
 		}
 
 		/**
 		 * Enqueuing js/css files
-		 * @since	TODO version
+		 *
+		 * @since		TODO version
 		 */
-		public function scem_enqueue_files( ) {
+		public function enqueue_scripts( ) {
 
-			wp_enqueue_script( 'scem_js', $this->directory_uri . 'js/scem.js', NULL, $this->version );
+			wp_enqueue_script( 'scem_js', $this->dir_uri . 'js/scem.js', NULL, $this->version );
+		}
+
+		/**
+		 * The name of the plugin used to uniquely identify it within the context of
+		 * WordPress and to define internationalization functionality.
+		 *
+		 * @since		TODO version
+		 * @return	string	The name of the plugin.
+		 */
+		public function get_plugin_name() {
+			return $this->plugin_name;
+		}
+
+		/**
+		 * Retrieve the version number of the plugin.
+		 *
+		 * @since		TODO version
+		 * @return	string	The version number of the plugin.
+		 */
+		public function get_version() {
+			return $this->version;
 		}
 	}
 }
