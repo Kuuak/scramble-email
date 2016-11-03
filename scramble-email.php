@@ -94,6 +94,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 
 			$this->load_dependencies();
 			$this->register_public_hooks();
+			$this->register_admin_hooks();
 		}
 
 		/**
@@ -127,7 +128,12 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		 *
 		 * @since		TODO version
 		 */
+		private function register_admin_hooks() {
 
+			$plugin_admin = new Scramble_Email_Admin( $this->get_plugin_name(), $this->get_version() );
+
+			add_action( 'admin_init', array($plugin_admin, 'register_mce_plugin') );
+			add_action( 'admin_init', array($plugin_admin, 'enqueue_editor_style') );
 		}
 
 		/**
