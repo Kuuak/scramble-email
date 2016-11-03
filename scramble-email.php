@@ -15,7 +15,7 @@
  * Scramble Email is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @package		scramble-email
+ * @package		Scramble_Email
  * @author		Felipe Paul Martins <fpm@opusmagnum.ch>
  * @license		GPL-2.0+
  * @link			https://opusmagnum.ch
@@ -36,13 +36,13 @@ function scramble_email_activate() {
 register_activation_hook( __FILE__, 'scramble_email_activate' );
 
 
-if ( !class_exists( 'Scramble_email' ) ) {
+if ( !class_exists( 'Scramble_Email' ) ) {
 
 	/**
-	 * Class Scramble_email
+	 * Class Scramble_Email
 	 * @since TODO version
 	 */
-	class Scramble_email {
+	class Scramble_Email {
 
 		/**
 		 * Class Constructor.
@@ -119,4 +119,4 @@ if ( !class_exists( 'Scramble_email' ) ) {
 	}
 }
 
-new Scramble_email();
+new Scramble_Email();
