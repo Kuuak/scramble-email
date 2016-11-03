@@ -1,13 +1,13 @@
 /**
  * Convert scrambled email into a mailto link
  *
- * @since TODO version
+ * @since		1.0.0
  *
- * @param	 string				eml		Base64 encoded Email address
- * @param	 string				ttl		Base64 encoded link's text content
- * @param	 null|string	clss	Optional. Class to add to the link element.
- *														Specify multiple classes separated by a comma (,).
- * @param	 null|string	sbj		Optional. A default subject to add to the mailto link.
+ * @param		string				eml		Base64 encoded Email address
+ * @param		string				ttl		Base64 encoded link's text content
+ * @param		null|string		clss	Optional. Class to add to the link element.
+ *															Specify multiple classes separated by a comma (,).
+ * @param		null|string	sbj			Optional. A default subject to add to the mailto link.
  * @return	bool
  */
 function scem_unscramble( eml, ttl, clss, sbj ) {
@@ -15,9 +15,9 @@ function scem_unscramble( eml, ttl, clss, sbj ) {
 	/**
 	 * Helper fonction to test if variable is set and not null
 	 *
-	 * @since TODO version
+	 * @since		1.0.0
 	 *
-	 * @param	 mixed variable
+	 * @param	 	mixed	variable
 	 * @return	bool
 	 */
 	var _isset = function( variable ) {
@@ -31,10 +31,10 @@ function scem_unscramble( eml, ttl, clss, sbj ) {
 	/**
 	 * Determine whether a variable is empty
 	 *
-	 * @since TODO version
+	 * @since		1.0.0
 	 *
-	 * @param mixed variable	Variable to be checked
-	 * @return bool						Returns FALSE if var exists and has a non-empty, non-zero value. Otherwise returns TRUE.
+	 * @param		mixed	variable	Variable to be checked
+	 * @return	bool						Returns FALSE if var exists and has a non-empty, non-zero value. Otherwise returns TRUE.
 	 */
 	var _empty = function( variable ) {
 

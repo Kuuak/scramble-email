@@ -5,7 +5,7 @@ var scem = window.scem || {};
 	/**
 	 * Helper fonction to test if variable is set and not null
 	 *
-	 * @since TODO version
+	 * @since 1.0.0
 	 *
 	 * @param	 mixed variable
 	 * @return	bool
@@ -37,7 +37,7 @@ var scem = window.scem || {};
 
 	/**
 	 *
-	 * @since		TODO version
+	 * @since		1.0.0
 	 */
 	scem.mce_win = function( editor, attrs, update ) {
 

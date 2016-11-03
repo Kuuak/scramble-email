@@ -3,7 +3,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       http://opusmagnum.ch
- * @since      TODO version
+ * @since      1.0.0
  *
  * @package    Scramble_Email
  * @subpackage Scramble_Email/admin
@@ -23,14 +23,14 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 
 	/**
 	 * Class Scramble_Email_Admin
-	 * @since	TODO version
+	 * @since	1.0.0
 	 */
 	class Scramble_Email_Admin {
 
 		/**
 		 * The ID of this plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @access	private
 		 * @var			string	$plugin_name	The ID of this plugin.
 		 */
@@ -39,7 +39,7 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		/**
 		 * The version of this plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @access	private
 		 * @var			string	$version	The current version of this plugin.
 		 */
@@ -48,7 +48,7 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @param		string	$plugin_name	The name of this plugin.
 		 * @param		string	$version			The version of this plugin.
 		 */
@@ -60,7 +60,7 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		/**
 		 * Register the stylesheets for the admin area.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		public function enqueue_styles() {
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/scem-wpview.css', array(), $this->version, 'all' );
@@ -69,7 +69,7 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		/**
 		 * Register the JavaScript for the admin area.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		public function enqueue_editor_style() {
 			global $editor_styles;
@@ -80,7 +80,7 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		/**
 		 * Register the TinyMCE plugin
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		public function register_mce_plugin() {
 
@@ -97,7 +97,7 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		/**
 		 * Add the custom button to the TinyMCE first toolbar
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 *
 		 * @param 	array	$buttons	An array of tinyMCE buttons.
 		 * @return	array
@@ -110,7 +110,7 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		/**
 		 * Enqueue the MCE plugin javascript
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 *
 		 * @param		array	$plugins	An array of all plugins.
 		 * @return	array

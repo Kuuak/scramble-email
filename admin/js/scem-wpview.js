@@ -5,7 +5,7 @@
 	/**
 	 * Helper fonction to test if variable is set and not null
 	 *
-	 * @since TODO version
+	 * @since 1.0.0
 	 *
 	 * @param	 mixed variable
 	 * @return	bool
@@ -21,7 +21,7 @@
 	/**
 	 * Determine whether a variable is empty
 	 *
-	 * @since TODO version
+	 * @since 1.0.0
 	 *
 	 * @param mixed variable	Variable to be checked
 	 * @return bool						Returns FALSE if var exists and has a non-empty, non-zero value. Otherwise returns TRUE.

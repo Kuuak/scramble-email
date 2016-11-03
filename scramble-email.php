@@ -3,7 +3,7 @@
  * Plugin Name:		Scramble Email
  * Description: 	Protect your email addresses from being harvested by automatic bots. Simply replace the emails in your post or page content by an unique shortcode.
  * Author: 				Felipe Paul Martins - Opus Magnum
- * Version: 			0.1
+ * Version: 			1.0.0
  * Author URI:		https://opusmagnum.ch
  * License:				GPL-2.0+
  * License URI:		http://www.gnu.org/licenses/gpl-2.0.txt
@@ -40,14 +40,14 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 
 	/**
 	 * Class Scramble_Email
-	 * @since TODO version
+	 * @since 1.0.0
 	 */
 	class Scramble_Email {
 
 		/**
 		 * The unique identifier of this plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @access	protected
 		 * @var			string	$plugin_name	The string used to uniquely identify this plugin.
 		 */
@@ -56,7 +56,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * The current version of the plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @access	protected
 		 * @var			string	$version	The current version of the plugin.
 		 */
@@ -65,7 +65,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * The directory path of the plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @access	protected
 		 * @var			string	$dir_path	The directory path of the plugin.
 		 */
@@ -74,7 +74,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * The directory URI of the plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @access	protected
 		 * @var			string	$dir_uri	The directory URI of the plugin.
 		 */
@@ -83,11 +83,11 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * Class Constructor.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		public function __construct() {
 
-			$this->version			= '0.1';
+			$this->version			= '1.0.0';
 			$this->plugin_name	= 'scramble-email';
 			$this->dir_path			= trailingslashit( plugin_dir_path( __FILE__ ) );
 			$this->dir_uri			= trailingslashit( plugin_dir_url(  __FILE__ ) );
@@ -100,7 +100,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * Init the plugin functions
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		private function load_dependencies() {
 
@@ -114,7 +114,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		 * Register all of the hooks related to the public-facing functionality
 		 * of the plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		private function register_public_hooks() {
 
@@ -126,7 +126,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		 * Register all of the hooks related to the admin area functionality
 		 * of the plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		private function register_admin_hooks() {
 
@@ -139,7 +139,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * Register the shortcode
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		public function add_shortcodes() {
 
@@ -149,7 +149,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * Transform the shortcode into javascript function call.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 *
 		 * @param		array		$atts		Shortcode attributes.
 		 * @return	string					Rendered HTML.
@@ -174,7 +174,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * Enqueuing js/css files
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 */
 		public function enqueue_scripts( ) {
 
@@ -185,7 +185,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		 * The name of the plugin used to uniquely identify it within the context of
 		 * WordPress and to define internationalization functionality.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @return	string	The name of the plugin.
 		 */
 		public function get_plugin_name() {
@@ -195,7 +195,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 		/**
 		 * Retrieve the version number of the plugin.
 		 *
-		 * @since		TODO version
+		 * @since		1.0.0
 		 * @return	string	The version number of the plugin.
 		 */
 		public function get_version() {
