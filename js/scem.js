@@ -64,5 +64,7 @@ function scem_unscramble( eml, ttl, clss, sbj ) {
 		}
 	}
 
-	document.currentScript.parentElement.replaceChild( a, document.currentScript );
+	if ( document.currentScript ) {
+		document.currentScript.parentElement.replaceChild( a, document.currentScript );
+	}
 }
