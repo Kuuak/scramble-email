@@ -3,7 +3,7 @@
  * Plugin Name:		Scramble Email
  * Description: 	Protect your email addresses from being harvested by automatic bots. Simply replace the emails in your post or page content by an unique shortcode.
  * Author: 				Felipe Paul Martins - Opus Magnum
- * Version: 			1.0.0
+ * Version: 			1.0.1
  * Author URI:		https://opusmagnum.ch
  * License:				GPL-2.0+
  * License URI:		http://www.gnu.org/licenses/gpl-2.0.txt
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Add default options on plugin activation.
- * @since 1.1
+ * @since 1.0.0
  */
 function scramble_email_activate() {
 
