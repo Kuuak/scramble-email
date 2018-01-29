@@ -204,4 +204,27 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 	}
 }
 
-new Scramble_Email();
+$scrambleEmail = new Scramble_Email();
+
+/**
+ * Scramble the given email and allows the email
+ * to be rendered in JS on the Frontend
+ *
+ * @since		1.1.0
+ *
+ * @param		string	$email		The email to scramble.
+ * @param		string	$title		The label of the link.
+ * @param		string	$subject	Optional. The subject to be inserted in the email when mailto is clicked.
+ * @param		array		$classes	Optional. HTML classes for the <a> element.
+ * @return	string						The HTML string to echo
+ */
+function scramble_email( $email, $title, $subject, $classes = array() ) {
+	global $scrambleEmail;
+
+	return $scrambleEmail->render_shortcode( array(
+		'email'	=> $email,
+		'title'	=> $title,
+		'subject'	=> $subject,
+		'classes'	=> $classes,
+	));
+}
