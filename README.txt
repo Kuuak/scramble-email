@@ -2,8 +2,8 @@
 Contributors: Kuuak
 Tags: email, anti-spam, shortcode
 Requires at least: 4.4
-Tested up to: 4.7.2
-Stable tag: 1.0.1
+Tested up to: 4.9.2
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ Simply replace the emails in your post or page content by an unique shortcode.
 2. Email link rendered in post page
 
 == Changelog ==
+
+= 1.1.0 - 29/01/2018 =
+* Add: Possibility to use as a function in addition to a shortcode.
 
 = 1.0.1 - 08/02/2017 =
 * Fix: Undefined `currentScript` variable when document loaded via ajax
