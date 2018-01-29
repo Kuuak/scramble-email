@@ -168,7 +168,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 			$email = base64_encode($email);
 			$title = base64_encode($title);
 
-			return "<script>scem_unscramble( '$email' , '$title'". ( (!empty($classes) || !empty($subject)) ? ', '. (!empty($subject) ? "'$classes'" : "'null'") . (!empty($subject) ? ", '$subject'" : '') : '' ) .');</script>';
+			return "<script>scem_unscramble( '$email' , '$title'". ( (!empty($classes) || !empty($subject)) ? ', '. (!empty($classes) ? "'$classes'" : "'null'") . (!empty($subject) ? ", '$subject'" : '') : '' ) .');</script>';
 		}
 
 		/**

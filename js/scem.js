@@ -57,11 +57,7 @@ function scem_unscramble( eml, ttl, clss, sbj ) {
 	a.innerHTML = window.atob(ttl);
 
 	if ( !_empty(clss) ) {
-		var classes = clss.split(',');
-
-		for (var i = 0; i < classes.length; i++ ) {
-			a.classList.add( classes[i] );
-		}
+		a.className = clss;
 	}
 
 	if ( document.currentScript ) {
