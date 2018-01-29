@@ -2,7 +2,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://opusmagnum.ch
+ * @link       https://github.com/Kuuak/scramble-email
  * @since      1.0.0
  *
  * @package    Scramble_Email
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @package    Scramble_Email
  * @subpackage Scramble_Email/admin
- * @author     Felipe Paul Martins <fpm@opusmagnum.ch>
+ * @author     Felipe Paul Martins
  */
 if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 
