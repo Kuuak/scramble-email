@@ -55,6 +55,27 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		public function __construct( $plugin_name, $version ) {
 			$this->plugin_name = $plugin_name;
 			$this->version = $version;
+
+			$this->load_settings();
+			$this->register_hooks();
+		}
+
+		/**
+		 * Create instance of plugin's settings page functionnalities
+		 *
+		 * @since		1.2.0
+		 */
+		private function load_settings() {
+			$settings = new Scramble_Email_Settings( $this->plugin_name, $this->version );
+		}
+
+		/**
+		 * Register the actions and filters related to the admin area functionality.
+		 *
+		 * @since		1.2.0
+		 */
+		private function register_hooks() {
+			add_action( 'plugin_action_links_scramble-email/scramble-email.php', array( $this, 'settings_action_link'), 1 );
 		}
 
 		/**
@@ -119,6 +140,25 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 			$plugin_array['scem_mce_plugin']		= plugin_dir_url( __FILE__ ) .'js/scem-mce-plugin.js';
 			$plugin_array['scem_admin_wpview']	= plugin_dir_url( __FILE__ ) .'js/scem-wpview.js';
 			return $plugin_array;
+		}
+
+		/**
+		 * Add settings action link on plugin page
+		 *
+		 * @since		1.2.0
+		 *
+		 * @param		array	$links	An array of plugin action links
+		 * @return	array					Array with extra setting link
+		 */
+		public function settings_action_link( $links ) {
+			$action_links = array(
+				'settings' => sprintf( '<a href="%s" title="%s">%s</a>',
+					admin_url( 'options-general.php?page=scem' ),
+					__( 'View Scramble Email Settings', 'scem' ),
+					__( 'Settings', 'scem' )
+				)
+			);
+			return array_merge( $action_links, $links );
 		}
 	}
 }

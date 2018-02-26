@@ -107,6 +107,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 			/**
 			 * The class responsible for defining all actions that occur in the admin area.
 			 */
+			require_once $this->dir_path .'admin/class-scramble-email-settings.php';
 			require_once $this->dir_path .'admin/class-scramble-email-admin.php';
 		}
 
