@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @package    Scramble_Email
  * @subpackage Scramble_Email/admin
- * @author     Felipe Paul Martins
+ * @author     Kuuak
  */
 if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 
