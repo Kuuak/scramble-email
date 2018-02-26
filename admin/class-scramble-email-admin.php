@@ -182,7 +182,7 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		public function the_content( $content ) {
 
 			// match all links with `mailto`
-			preg_match_all( '/<a([^>]+)href="mailto:([^@"]+@[^@"]+)"([^>]+)>([^<]*)<\/a>/', $content, $matches, PREG_SET_ORDER );
+			preg_match_all( '/<a([^>]*)href="mailto:([^@"]+@[^@"]+)"([^>]*)>([^<]*)<\/a>/', $content, $matches, PREG_SET_ORDER );
 
 			foreach ($matches as $match) {
 				$attrs = [];

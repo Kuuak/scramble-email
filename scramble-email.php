@@ -94,7 +94,6 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 
 			$this->load_dependencies();
 			$this->register_public_hooks();
-			$this->register_admin_hooks();
 		}
 
 		/**
@@ -109,6 +108,8 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 			 */
 			require_once $this->dir_path .'admin/class-scramble-email-settings.php';
 			require_once $this->dir_path .'admin/class-scramble-email-admin.php';
+
+			$this->admin = new Scramble_Email_Admin( $this->get_plugin_name(), $this->get_version() );
 		}
 
 		/**
@@ -121,16 +122,6 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 
 			add_action( 'init', array($this, 'add_shortcodes') );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts') );
-		}
-
-		/**
-		 * Register all of the hooks related to the admin area functionality
-		 * of the plugin.
-		 *
-		 * @since		1.0.0
-		 */
-		private function register_admin_hooks() {
-			$plugin_admin = new Scramble_Email_Admin( $this->get_plugin_name(), $this->get_version() );
 		}
 
 		/**
@@ -240,4 +231,18 @@ function scramble_email( $email, $title = null, $attrs = array() ) {
 		'title'	=> $title,
 		'attrs'	=> $attrs,
 	));
+}
+
+/**
+ * Scramble email links in the given content string
+ *
+ * @since		1.2.0
+ *
+ * @param		string	$content	The string content to filter from
+ * @return	string
+ */
+function scramble_email_filter( $content ) {
+	global $scrambleEmail;
+
+	return $scrambleEmail->admin->the_content( $content );
 }
