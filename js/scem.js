@@ -10,7 +10,7 @@
  * @param		null|string	sbj			Optional. A default subject to add to the mailto link.
  * @return	bool
  */
-function scem_unscramble( eml, ttl, clss, sbj ) {
+function scem_unscramble( eml, ttl, attrs ) {
 
 	/**
 	 * Helper fonction to test if variable is set and not null
@@ -52,12 +52,24 @@ function scem_unscramble( eml, ttl, clss, sbj ) {
 
 	var a = document.createElement("a");
 
-	a.href = 'mailto:'+ window.atob(eml) +( !_empty(sbj) ? '?subject='+ sbj : '' );
+	a.href = 'mailto:'+ window.atob(eml);
+	a.textContent = window.atob(ttl);
 
-	a.innerHTML = window.atob(ttl);
 
-	if ( !_empty(clss) ) {
-		a.className = clss;
+
+	if ( !_empty(attrs) ) {
+
+		attrs = JSON.parse( attrs );
+
+
+		if ( !_empty(attrs.subject) ) {
+			a.href += `?subject=${encodeURIComponent(attrs.subject)}`;
+			delete attrs.subject;
+		}
+
+		for (var attr in attrs) {
+			a.setAttribute( attr, attrs[attr] );
+		}
 	}
 
 	if ( document.currentScript ) {

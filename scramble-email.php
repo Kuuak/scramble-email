@@ -160,10 +160,24 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 				array(
 					'email'			=> null,
 					'title'			=> null,
-					'classes'		=> null,
-					'subject'		=> null,
+					'attrs'			=> null,
 				), $atts )
 			);
+
+			if ( !empty($attrs) && !is_array($attrs) ) {
+				$attrs = json_decode( str_replace('##', '"', $attrs) );
+			}
+			else if ( empty($attrs) && !empty($title) ) {
+				$tmp = $title;
+				if ( !is_array($tmp) ) {
+					$tmp = json_decode( str_replace('##', '"', $tmp) );
+				}
+
+				if ( is_array($tmp) ) {
+					$attrs = $tmp;
+					$title = null;
+				}
+			}
 
 			if ( empty($title) ) {
 				$title = $email;
@@ -172,7 +186,7 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 			$email = base64_encode($email);
 			$title = base64_encode($title);
 
-			return "<script>scem_unscramble( '$email' , '$title'". ( (!empty($classes) || !empty($subject)) ? ', '. (!empty($classes) ? "'$classes'" : "'null'") . (!empty($subject) ? ", '$subject'" : '') : '' ) .');</script>';
+			return "<script>scem_unscramble( '$email', '$title', '". json_encode($attrs) ."');</script>";
 		}
 
 		/**
@@ -218,17 +232,15 @@ $scrambleEmail = new Scramble_Email();
  *
  * @param		string	$email		The email to scramble.
  * @param		string	$title		Optional. The label of the link.
- * @param		string	$subject	Optional. The subject to be inserted in the email when mailto is clicked.
- * @param		array		$classes	Optional. HTML classes for the <a> element.
+ * @param		array		$attrs		Optional. HTML attibutres for the <a> element.
  * @return	string						The HTML string to echo
  */
-function scramble_email( $email, $title = null, $subject = null, $classes = array() ) {
+function scramble_email( $email, $title = null, $attrs = array() ) {
 	global $scrambleEmail;
 
 	return $scrambleEmail->render_shortcode( array(
 		'email'	=> $email,
 		'title'	=> $title,
-		'subject'	=> $subject,
-		'classes'	=> $classes,
+		'attrs'	=> $attrs,
 	));
 }
