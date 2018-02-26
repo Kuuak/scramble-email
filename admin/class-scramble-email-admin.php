@@ -75,6 +75,16 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 		 * @since		1.2.0
 		 */
 		private function register_hooks() {
+
+			// Do no load shortcode elements if the parse content is enabled
+			if ( !(bool)get_option( 'scem_parse_content' ) ) {
+				add_action( 'admin_init', array($this, 'register_mce_plugin') );
+				add_action( 'admin_init', array($this, 'enqueue_editor_style') );
+			}
+			else {
+				add_filter( 'the_content', array($this,'the_content') );
+			}
+
 			add_action( 'plugin_action_links_scramble-email/scramble-email.php', array( $this, 'settings_action_link'), 1 );
 		}
 
@@ -159,6 +169,34 @@ if ( !class_exists( 'Scramble_Email_Admin' ) ) {
 				)
 			);
 			return array_merge( $action_links, $links );
+		}
+
+		/**
+		 * Parse the WYSIWYG editor content to scramble mailto: links
+		 *
+		 * @since		1.2.0
+		 *
+		 * @param		string	$content
+		 * @return	string
+		 */
+		public function the_content( $content ) {
+
+			// match all links with `mailto`
+			preg_match_all( '/<a([^>]+)href="mailto:([^@"]+@[^@"]+)"([^>]+)>([^<]*)<\/a>/', $content, $matches, PREG_SET_ORDER );
+
+			foreach ($matches as $match) {
+				$attrs = [];
+				// match & parse the html attributes
+				preg_match_all('/([^=]+)="([^"]+)"/', trim("{$match[1]} {$match[3]}"), $matches_attrs, PREG_SET_ORDER);
+				foreach ($matches_attrs as $attr) {
+					$attrs[$attr[1]] = $attr[2];
+				}
+
+				// Replace the links with the scramble email script tag
+				$content = str_replace( $match[0], scramble_email($match[2], $match[4], $attrs), $content );
+			}
+
+			return $content;
 		}
 	}
 }
