@@ -3,7 +3,7 @@
  * Plugin Name:		Scramble Email
  * Description: 	Protect your email addresses from being harvested by automatic bots. Simply replace the emails in your post or page content by an unique shortcode.
  * Author: 				Kuuak
- * Version: 			1.1.1
+ * Version: 			1.2.0
  * Author URI:		https://github.com/Kuuak
  * License:				GPL-2.0+
  * License URI:		http://www.gnu.org/licenses/gpl-2.0.txt
