@@ -159,11 +159,15 @@ if ( !class_exists( 'Scramble_Email' ) ) {
 			extract( shortcode_atts(
 				array(
 					'email'			=> null,
-					'title'			=> "Email",
+					'title'			=> null,
 					'classes'		=> null,
 					'subject'		=> null,
 				), $atts )
 			);
+
+			if ( empty($title) ) {
+				$title = $email;
+			}
 
 			$email = base64_encode($email);
 			$title = base64_encode($title);
@@ -213,12 +217,12 @@ $scrambleEmail = new Scramble_Email();
  * @since		1.1.0
  *
  * @param		string	$email		The email to scramble.
- * @param		string	$title		The label of the link.
+ * @param		string	$title		Optional. The label of the link.
  * @param		string	$subject	Optional. The subject to be inserted in the email when mailto is clicked.
  * @param		array		$classes	Optional. HTML classes for the <a> element.
  * @return	string						The HTML string to echo
  */
-function scramble_email( $email, $title, $subject, $classes = array() ) {
+function scramble_email( $email, $title = null, $subject = null, $classes = array() ) {
 	global $scrambleEmail;
 
 	return $scrambleEmail->render_shortcode( array(

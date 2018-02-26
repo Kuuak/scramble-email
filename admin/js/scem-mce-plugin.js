@@ -48,7 +48,7 @@ var scem = window.scem || {};
 			classes		: 'scem',
 			body			: [
 				{ type: 'textbox', name: 'email',		label: 'Email',		value: isset(attrs.email)		? attrs.email		: '', style: 'width: 250px;' },
-				{ type: 'textbox', name: 'title',		label: 'Title',		value: isset(attrs.title)		? attrs.title		: '', style: 'width: 250px;' },
+				{ type: 'textbox', name: 'title',		label: 'Title',		value: isset(attrs.title)		? attrs.title		: '', style: 'width: 250px;', placeholder: 'Optional' },
 				{ type: 'textbox', name: 'classes',	label: 'Classes',	value: isset(attrs.classes)	? attrs.classes	: '', style: 'width: 250px;', placeholder: 'Optional' },
 				{ type: 'textbox', name: 'subject',	label: 'Subject',	value: isset(attrs.subject)	? attrs.subject	: '', style: 'width: 250px;', placeholder: 'Optional' },
 			],
