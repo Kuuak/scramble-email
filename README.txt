@@ -3,7 +3,7 @@ Contributors: Kuuak
 Tags: email, anti-spam, shortcode
 Requires at least: 4.4
 Tested up to: 4.9.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ Simply replace the emails in your post or page content by an unique shortcode.
 2. Email link rendered in post page
 
 == Changelog ==
+
+= 1.2.1 - 27/02/2018 =
+* Fix: JS template string not supported by older browsers
 
 = 1.2.0 - 26/02/2018 =
 * Add: WYSIWYG content filtering. Automatically scramble the email link in the WYSIWYG editor. activable by an option in the new options page.
