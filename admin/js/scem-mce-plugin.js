@@ -66,7 +66,7 @@ var scem = window.scem || {};
 					}
 				}
 
-				var shortcode = `[scem email="${event.data.email}" title="${event.data.title}" attrs="${JSON.stringify(attrs).replace(/"/g, '##')}"/]`;
+				var shortcode = '[scem email="'+ event.data.email +'" title="'+ event.data.title +'" attrs="'+ JSON.stringify(attrs).replace(/"/g, '##') +'"/]';
 
 				if ( isset(update) )	update( shortcode );
 				else									editor.insertContent( shortcode );

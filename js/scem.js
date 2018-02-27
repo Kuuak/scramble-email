@@ -63,7 +63,7 @@ function scem_unscramble( eml, ttl, attrs ) {
 
 
 		if ( !_empty(attrs.subject) ) {
-			a.href += `?subject=${encodeURIComponent(attrs.subject)}`;
+			a.href += '?subject='+ encodeURIComponent(attrs.subject);
 			delete attrs.subject;
 		}
 
